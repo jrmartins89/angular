@@ -1,5 +1,9 @@
 <app-header></app-header>
 <main>
-<app-post-create></app-post-create>
-<app-post-list></app-post-list>
+<app-post-create (postCreated)="onPostAdded($event)"></app-post-create>
+<app-post-list [post_list]="storedPosts"></app-post-list>
 </main>
+
+<!--we're listening to the postCreated event and adding the post via onPostAdded to the stored post list
+(storedPosts) and we're passing down that array to app-post-list. Angular's change detection will detect when a new post
+is created and render the new post -->
