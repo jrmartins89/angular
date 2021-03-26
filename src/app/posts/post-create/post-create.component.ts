@@ -26,7 +26,7 @@ export class PostCreateComponent{
     if(form.invalid){
       return;
     }
-    this.PostsService.addPosts(form.value.title, form.value.content);
+    this.PostsService.addPosts(form.value.id, form.value.title, form.value.content);
     //clears the form after the post is submitted
     form.resetForm();
   };
