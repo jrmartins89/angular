@@ -1,6 +1,12 @@
 const express = require('express');
+const bodyParser= require('body-parser');
 
 const app = express();
+
+//this function will return a valid middleware for parsing json data
+app.use(bodyParser.json());
+//the argument extended:false is to make sure only default features are supported in the url enconding
+app.use(bodyParser.urlencoded({extended:false}));
 
 app.use((req,res,next)=>{
 
@@ -17,6 +23,17 @@ app.use((req,res,next)=>{
   next();
 });
 //all the requests reaching localhost/3000/posts will reach this middleware
+
+
+app.use('/api/posts',(req,res,next)=>{
+  const posts=req.body;
+  console.log(post);
+  //we need to return a response otherwise the request will timeout on the client
+  // code 201 means everything's ok and a new resource was created
+  res.status(201).json({
+    message:'Posted added!'
+  });
+})
 app.use('/api/posts',(req,res,next)=>{
   const  posts=[
     {
