@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Output } from "@angular/core";
+import { NgForm } from "@angular/forms";
 import {Post} from '../post.model';
+
 @Component(
   {
     selector: 'app-post-create',
@@ -16,10 +18,14 @@ export class PostCreateComponent{
   //works with. To pass this information, we need to add the <> and add the type between them
   @Output() postCreated= new EventEmitter<Post>();
 
-  onAddPost(){
+  onAddPost(form:NgForm){
+    //checking to see if the form object is valid or not. this will prevent invalid posts to be added to the post list
+    if(form.invalid){
+      return;
+    }
     const post:Post = {
-      title:this.enteredTitle,
-      content:this.enteredContent
+      title: form.value.title,
+      content:form.value.content
     }
     this.postCreated.emit(post);
   };
