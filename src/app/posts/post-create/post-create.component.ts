@@ -27,5 +27,7 @@ export class PostCreateComponent{
       return;
     }
     this.PostsService.addPosts(form.value.title, form.value.content);
+    //clears the form after the post is submitted
+    form.resetForm();
   };
 }
