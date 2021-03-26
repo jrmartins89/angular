@@ -1,5 +1,6 @@
 import { Component, Input} from "@angular/core";
 import {Post} from '../post.model';
+import { PostsService } from "../posts.service";
 
 @Component(
   {
@@ -16,4 +17,7 @@ export class PostListComponent{
     {title:'third post',  content:'This is the third post!'}
   ] */
   @Input() post_list: Post[]=[];
+
+  //the public keyword will automatically create a new property in the component and store the incoming value in the property
+  constructor(public postsService: PostsService){ }
 }
