@@ -25,16 +25,17 @@ app.use((req,res,next)=>{
 //all the requests reaching localhost/3000/posts will reach this middleware
 
 
-app.use('/api/posts',(req,res,next)=>{
-  const posts=req.body;
+app.post("/api/posts",(req,res,next)=>{
+  const post=req.body;
   console.log(post);
   //we need to return a response otherwise the request will timeout on the client
-  // code 201 means everything's ok and a new resource was created
+  // code 201 means everything's ok and a  new resource was created
   res.status(201).json({
     message:'Posted added!'
   });
-})
-app.use('/api/posts',(req,res,next)=>{
+});
+
+app.get("/api/posts",(req,res,next)=>{
   const  posts=[
     {
       id:'123',
