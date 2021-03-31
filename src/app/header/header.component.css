@@ -1,0 +1,17 @@
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+/*the toolbar uses flex by default and the setting below will ensure that the spacer element takes all available remaining
+space between the other elements. Therefore it pushes 'Mymessages' to the right and 'new post' to the left.*/
+
+.spacer{
+  flex:1 1 auto;
+}
